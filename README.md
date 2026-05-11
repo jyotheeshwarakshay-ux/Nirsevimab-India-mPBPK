@@ -1,15 +1,25 @@
-# India-Specific mPBPK-QSSA-TMDD Model of Nirsevimab
+# India-Specific Nirsevimab mPBPK-QSSA-TMDD Model
 
-**Flagship PharmD Project**  
-**Specialization**: Infectious Disease Immunopharmacology
+**Project Title**  
+Development of an India-Specific Integrated Minimal Physiologically Based Pharmacokinetic (mPBPK) Model with Quasi-Steady-State Approximation of Target-Mediated Drug Disposition (QSSA-TMDD) for Nirsevimab in Indian Infants
 
-Full computational model + interactive Shiny dosing simulator + preprint manuscript.
+**Key Features**
+- Real IAP 2015 LMS growth charts with dynamic allometric scaling
+- Corrected QSSA-TMDD (Kd_ss = (koff + kint)/kon)
+- Terminal half-life verified at ~71 days (CL = 0.00836 L/day)
+- Monte Carlo PTA with IIV (n = 5,000 virtual Indian infants)
+- Protective threshold = 0.1 mg/L (FDA BLA standard)
+- Interactive Shiny dosing simulator
 
-**Manuscript PDF**: [Nirsevimab_India_mPBPK_Manuscript.pdf](Nirsevimab_India_mPBPK_Manuscript.docx.pdf)
+**All Claude 2026 critique points addressed**  
+(Half-life corrected, target concentration fixed, concentration plot corrected, etc.)
 
-**GitHub**: https://github.com/jyotheeshwarakshay-ux/Nirsevimab-India-mPBPK
+**Repository Status**  
+This is the final, clean version ready for preprint and PhD applications.
 
-**Author**: Jyotheeshwar Akshay Ravi Kumar (PharmD 5th year)  
-**Goal**: Hybrid Clinical Development + Translational Medicine → CSO → WHO Director General
+**Contact**  
+Jyotheeshwar Akshay Ravi Kumar – PharmD 5th Year  
+Specialization: Infectious Disease Immunopharmacology
 
-⭐ Star this repo if it helps your research!
+**GitHub**  
+https://github.com/jyotheeshwarakshay-ux/Nirsevimab-India-mPBPK
