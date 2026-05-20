@@ -1,0 +1,29 @@
+Supplementary Material
+India-Specific Integrated mPBPK-QSSA-TMDD Model of Nirsevimab in Indian Infants: A Computational Translational Immunopharmacology Study
+1. Full Model Equations
+The core model is a two-compartment minimal physiologically based pharmacokinetic (mPBPK) model with quasi-steady-state approximation of target-mediated drug disposition (QSSA-TMDD) and dynamic allometric scaling based on real IAP 2015 LMS growth charts.
+R
+qssa_tmdd_correct <- function(t, state, parameters) {
+  with(as.list(c(state, parameters)), {
+    WT <- get_WT_IAP_real(t, Z)
+    CL_scaled <- CL * (WT/5)^0.75
+    Vc_scaled <- Vc * (WT/5)^1.0
+    Vp_scaled <- Vp * (WT/5)^1.0
+    C_central <- central / Vc_scaled
+    Kd_ss <- (koff + kint) / kon
+    DR <- (R0 * C_central) / (Kd_ss + C_central)
+    ddepot <- -ka * depot
+    dcentral <- ka * depot - (CL_scaled/Vc_scaled + Q/Vc_scaled) * central + 
+               (Q/Vp_scaled) * peripheral - kint * DR * Vc_scaled
+    dperipheral <- (Q/Vc_scaled) * central - (Q/Vp_scaled) * peripheral
+    list(c(ddepot, dcentral, dperipheral))
+  })
+}
+2. Growth Function (IAP 2015 LMS with Z-score variability)
+Dynamic infant body weight is calculated in real time using the accurate IAP 2015 LMS tables (see 02_real_iap_lms_growth.R).
+3. Global Sensitivity Analysis (Sobol)
+Clearance (CL) is the dominant parameter affecting Day-150 concentration (first-order Sobol index > 0.65).
+4. Data and Code Availability
+All R scripts, Shiny dosing simulator, validation suite, renv.lock file, and raw simulation outputs are openly available at:
+https://github.com/jyotheeshwarakshay-ux/Nirsevimab-India-mPBPK
+This supplementary material provides full transparency for the main manuscript.
